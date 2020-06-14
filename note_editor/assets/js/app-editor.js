@@ -23,6 +23,13 @@
 
   });
 
+  let timer = null;
+  clearInterval(timer)
+  timer = setInterval(() => {
+    refreshCatalog();
+    clearInterval(timer)
+  }, 50)
+
 
 }).call(this);
 
@@ -31,10 +38,6 @@ function refreshCatalog() {
   var catalogHtml = '';
   var headerEl = 'h1,h2,h3,h4,h5';
   $(".simditor-body").children(headerEl).each(function (index, element) {
-    // console.log(element)
-    // console.log(element.innerHTML)
-    // console.log(element.outerText)
-    // console.log(element.localName)
     var tagName = element.localName;
     var randomId = Math.random().toString(36).substr(2);
     element.setAttribute("id", randomId);
@@ -58,6 +61,7 @@ function refreshCatalog() {
   $("#catalogBody").html("");
   $("#catalogBody").append(catalogHtml);
 }
+
 
 function scrollDiv(e) {
   /*
