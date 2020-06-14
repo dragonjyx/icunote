@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>记录笔记</title>
+  <link rel="stylesheet" href="assets/layerui/css/layui.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/simditor.css" />
+  <link rel="stylesheet" href="assets/css/app.css">
+
+  <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/js/mobilecheck.js"></script>
+
+  <script type="text/javascript">
+    if(mobilecheck()){
+      $('<link/>', {
+        media: 'all',
+        rel: 'stylesheet',
+        type: 'text/css',
+        href: 'assets/css/mobile.css'
+      }).appendTo('head')
+    }
+  </script>
+
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+
+
+  <div class="layui-header">
+
+    <div class="layui-logo">
+      <i class="layui-icon layui-icon-app"></i>
+    </div>
+
+    <ul class="layui-nav layui-layout-left article-title-link">
+      <li class="layui-nav-item"><a href="">互联网面试题</a></li>
+      <li class="layui-nav-item">/</li>
+      <li class="layui-nav-item"><a href="">Redis核心知识点</a></li>
+    </ul>
+
+    <div class="article-title">
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+      </div>
+    </div>
+
+    <ul class="layui-nav layui-layout-right icu-article-action">
+      <li class="layui-nav-item icu-save">
+        <button type="button" class="layui-btn layui-btn-primary layui-btn-sm">保存</button>
+      </li>
+      <li class="layui-nav-item icu-publish">
+        <button type="button" class="layui-btn layui-btn-normal layui-btn-sm">发布</button>
+      </li>
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <i class="layui-icon layui-icon-more"></i>
+        </a>
+      </li>
+    </ul>
+
+
+  </div>
+
+
+
+  <!-- 左边目录大纲 layui-bg-black -->
+  <div class="layui-side">
+    <div class="layui-side-scroll">
+      <div class="layui-card">
+        <div class="layui-card-header">大纲</div>
+        <div class="layui-card-body" id="catalogBody">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div class="wrapper">
+      <textarea id="note-content" data-autosave="editor-content" autofocus required></textarea>
+    </div>
+  </div>
+
+
+  <!-- 底部固定区域
+  <div class="layui-footer">
+    Copyright © 2014-2021 <a href="www.icunote.com">www.icunote.com</a>. All Rights Reserved ouyangxiaolong版权所有
+  </div>
+  -->
+
+</div>
+<script src="assets/layerui/layui.js"></script>
+
+<script type="text/javascript" src="assets/js/module.js"></script>
+<script type="text/javascript" src="assets/js/uploader.js"></script>
+<script type="text/javascript" src="assets/js/hotkeys.js"></script>
+<script type="text/javascript" src="assets/js/simditor.js"></script>
+<script type="text/javascript" src="assets/js/app-editor.js"></script>
+
+</body>
+</html>

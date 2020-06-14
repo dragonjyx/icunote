@@ -50,9 +50,7 @@
 
       <div class="icu-content">
 
-        <textarea id="icu-article-content" class="icu-article-content"></textarea>
 
-        <!--
         <el-row>
           <el-col :span="12" :offset="6">
             <div class="icu-article-content-editor">
@@ -65,7 +63,6 @@
             <div></div>
           </el-col>
         </el-row>
-        -->
 
       </div>
 
@@ -76,45 +73,22 @@
 </template>
 
 <script>
-  import simditor from 'simditor'
 
   export default {
     props: ['value'],
     data() {
       return {
         articleTitle: "",
-        articleContent: "",
-        editor:'',//保存simditor对象
-        toolbar:['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|',
-          'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment'],
-        mobileToolbar:["bold", "underline", "strikethrough", "color", "ul", "ol"],
-
+        articleContent: ""
       }
     },
     components: {
-      simditor,
-      uploader
     },
     mounted() {
       this.createEditor();
     },
     methods: {
       createEditor(){
-        Simditor.locale = 'zh-CN';
-        this.editor = new simditor({
-          textarea: $('#icu-article-content'),
-          placeholder: '从这里开始您的精彩记录吧...',
-          toolbar: this.toolbar,
-          toolbarFloat:true,
-          pasteImage: true,
-          defaultImage: 'assets/images/logo.png',
-          upload: false
-        });
-
-        var _this = this
-        this.editor.on("valuechanged", function(e, src) {
-          _this.articleContent = _this.editor.getValue()
-        })//valuechanged是simditor自带获取值得方法
       },
       go2Broswer() {
         console.log("预览")
@@ -165,9 +139,6 @@
     min-height: 1024px;
     width: 100%;
   }
-
-
-  @import "../../../node_modules/simditor/styles/simditor.css";
 
   .icu-article-container .el-header {
     background-color: #fff;
