@@ -19,10 +19,10 @@
         </el-col>
 
         <el-col :span="1" :offset="6" class="icu-article-save">
-          <el-button>保存</el-button>
+          <el-button size="mini">保存</el-button>
         </el-col>
         <el-col :span="1" class="icu-article-publish">
-          <el-button type="primary">发布</el-button>
+          <el-button type="primary" size="mini">发布</el-button>
         </el-col>
         <el-col :span="1" class="icu-article-more">
           <el-dropdown @command="selectMore">
@@ -50,15 +50,22 @@
 
       <div class="icu-content">
 
+        <textarea id="icu-article-content" class="icu-article-content"></textarea>
+
+        <!--
         <el-row>
-          <el-col :span="10" :offset="5">
-            <div class="grid-content bg-purple" style="height: 163px;margin-bottom: 10px;">
+          <el-col :span="12" :offset="6">
+            <div class="icu-article-content-editor">
+
+              <textarea id="icu-article-content" class="icu-article-content"></textarea>
+
             </div>
           </el-col>
-          <el-col :span="4">
-            <div class="grid-content bg-purple-light" style="height: 354px;margin-bottom: 10px;"></div>
+          <el-col :span="6">
+            <div></div>
           </el-col>
         </el-row>
+        -->
 
       </div>
 
@@ -69,20 +76,46 @@
 </template>
 
 <script>
+  import simditor from 'simditor'
 
   export default {
+    props: ['value'],
     data() {
       return {
-        articleTitle: ""
+        articleTitle: "",
+        articleContent: "",
+        editor:'',//保存simditor对象
+        toolbar:['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|',
+          'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment'],
+        mobileToolbar:["bold", "underline", "strikethrough", "color", "ul", "ol"],
+
       }
     },
     components: {
-      app
+      simditor,
+      uploader
     },
     mounted() {
-
+      this.createEditor();
     },
     methods: {
+      createEditor(){
+        Simditor.locale = 'zh-CN';
+        this.editor = new simditor({
+          textarea: $('#icu-article-content'),
+          placeholder: '从这里开始您的精彩记录吧...',
+          toolbar: this.toolbar,
+          toolbarFloat:true,
+          pasteImage: true,
+          defaultImage: 'assets/images/logo.png',
+          upload: false
+        });
+
+        var _this = this
+        this.editor.on("valuechanged", function(e, src) {
+          _this.articleContent = _this.editor.getValue()
+        })//valuechanged是simditor自带获取值得方法
+      },
       go2Broswer() {
         console.log("预览")
       },
@@ -123,7 +156,18 @@
 
 <style lang="less">
 
-  @import "../../assets/css/common.css";
+  .header-holder {
+    height: 60px;
+    width: 100%;
+  }
+
+  .el-main {
+    min-height: 1024px;
+    width: 100%;
+  }
+
+
+  @import "../../../node_modules/simditor/styles/simditor.css";
 
   .icu-article-container .el-header {
     background-color: #fff;
@@ -165,10 +209,20 @@
     font-weight: 700;
   }
 
+
+  .icu-article-container .icu-article-save .el-button{
+    margin-right: 1em;
+  }
+
+  .icu-article-container .icu-article-publish .el-button{
+    margin-left: 1em;
+  }
+
   .icu-article-container .icu-article-more {
     font-size: 18px;
     color: darkgray;
     cursor: pointer;
+    padding-left: 1em;
   }
 
 
@@ -208,5 +262,23 @@
   }
 
 
+  /****editor*****/
+  .icu-content .icu-article-content-editor{
+
+
+  }
+
+  .icu-content .icu-article-content-editor .icu-article-content{
+    height: 1024px !important;
+  }
+
+  .icu-content .icu-article-content-editor .icu-article-content .simditor-body,.simditor-wrapper{
+    height: 2048px !important;
+  }
+
+  .icu-content .icu-article-content-editor .icu-article-content .simditor-body,.simditor-wrapper{
+    /*position: fixed !important;*/
+    /*margin-top: 70px !important;*/
+  }
 
 </style>
