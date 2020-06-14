@@ -23,7 +23,6 @@
 
   });
 
-  refreshCatalog();
 
 }).call(this);
 
@@ -53,10 +52,19 @@ function refreshCatalog() {
       styleN = '5';
     }
 
-    catalogHtml += '<a href="#' + randomId + '" class="catalog-style catalog-style-' + styleN + '">' + element.outerText + '</a><br/>';
+    catalogHtml += '<a onclick="scrollDiv(this)" href="#' + randomId + '" class="catalog-style catalog-style-' + styleN + '">' + element.outerText + '</a><br/>';
   });
   // console.log(catalogHtml);
   $("#catalogBody").html("");
   $("#catalogBody").append(catalogHtml);
 }
 
+function scrollDiv(e) {
+  /*
+  var target = document.getElementById(e.hash.slice(1));
+  console.log(target)
+  if (!target) return;
+  var targetOffset = $(target).offset().top - 50;
+  $(target).scroll(targetOffset)
+  */
+}
