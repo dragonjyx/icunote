@@ -60,8 +60,6 @@
 
     },
     mounted() {
-      localStorage.setItem('showHeader', 1);
-      localStorage.setItem('showFooter', 1);
     }
   }
 </script>

@@ -6,10 +6,11 @@ import noteDetail from '@/components/note/note-detail'
 import noteWrite from '@/components/note/note-write'
 import login from '@/components/login/login'
 import register from '@/components/login/register'
+import header from '@/components/common/header'
+import footer from '@/components/common/footer'
 import index from '@/components/index'
 
 Vue.use(Router)
-
 
 export default new Router({
   routes: [
@@ -45,6 +46,16 @@ export default new Router({
       path: '/note-write',
       name: 'noteWrite',
       component: noteWrite
+    },
+    {
+      path: '/header',
+      name: 'header',
+      component: header
+    },
+    {
+      path: '/footer',
+      name: 'footer',
+      component: footer
     }
   ]
 })

@@ -1,8 +1,10 @@
 <template>
 
+  <el-container>
+    <icu-header></icu-header>
 
-  <div class="icu-register-content">
-
+    <el-main>
+      <div class="icu-register-content">
 
     <el-row>
 
@@ -22,7 +24,7 @@
                   <el-col :span="24" class="el-row-holder"></el-col>
 
                   <el-col :span="24" class="icu-login-title">
-                    <span class="login" @click="go2Page('login')">登录</span>&nbsp;&nbsp; <span class="seperate">|</span> &nbsp;&nbsp;<span class="register">注册</span>
+                    <span class="login" @click="go2Page('/login')">登录</span>&nbsp;&nbsp; <span class="seperate">|</span> &nbsp;&nbsp;<span class="register">注册</span>
                   </el-col>
 
                   <el-col :span="20" :offset="2" class="icu-account">
@@ -63,11 +65,18 @@
 
 
   </div>
+    </el-main>
 
+    <el-footer>
+      <icu-footer></icu-footer>
+    </el-footer>
+  </el-container>
 
 </template>
 
 <script>
+  import icuHeader from '@/components/common/header';
+  import icuFooter from '@/components/common/footer';
   export default {
     data() {
       return {
@@ -75,9 +84,11 @@
         password:''
       }
     },
+    components: {
+      icuHeader,
+      icuFooter
+    },
     mounted() {
-      localStorage.setItem('showHeader', 1);
-      localStorage.setItem('showFooter', 1);
     },
     methods: {
       go2Page(path) {
@@ -107,6 +118,7 @@
 </script>
 
 <style lang="less">
+  @import "../../assets/css/common.css";
 
   .icu-register-content .el-col {
     background-color: transparent;

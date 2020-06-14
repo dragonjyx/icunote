@@ -1,54 +1,71 @@
 <template>
 
-  <div class="icu-content">
 
-    <el-row>
-      <el-col :span="10" :offset="5">
-        <div class="grid-content bg-purple" style="height: 163px;margin-bottom: 10px;">
-        </div>
-        <div class="grid-content bg-purple" style="height: 163px;margin-bottom: 10px;">
-        </div>
-        <div class="grid-content bg-purple" style="height: 163px;margin-bottom: 10px;">
-        </div>
-        <div class="grid-content bg-purple" style="height: 163px;margin-bottom: 10px;">
-        </div>
-        <div class="grid-content bg-purple" style="height: 163px;margin-bottom: 10px;">
-        </div>
-        <div class="grid-content bg-purple" style="height: 163px;margin-bottom: 10px;">
-        </div>
-      </el-col>
-      <el-col :span="4">
-        <div class="grid-content bg-purple-light" style="height: 354px;margin-bottom: 10px;"></div>
-        <div class="grid-content bg-purple-light" style="height: 354px;margin-bottom: 10px;"></div>
-      </el-col>
-    </el-row>
+  <el-container>
+    <!--设置父子组建，方便调用-->
+    <icu-header ref="icuHeaderObj" @queryNoteList="doQueryNoteList"></icu-header>
+
+    <el-main>
+      <div class="header-holder"></div>
+
+      <div class="icu-content">
+
+        <el-row>
+          <el-col :span="10" :offset="5">
+            <div class="grid-content bg-purple" style="height: 163px;margin-bottom: 10px;">
+            </div>
+            <div class="grid-content bg-purple" style="height: 163px;margin-bottom: 10px;">
+            </div>
+            <div class="grid-content bg-purple" style="height: 163px;margin-bottom: 10px;">
+            </div>
+            <div class="grid-content bg-purple" style="height: 163px;margin-bottom: 10px;">
+            </div>
+            <div class="grid-content bg-purple" style="height: 163px;margin-bottom: 10px;">
+            </div>
+            <div class="grid-content bg-purple" style="height: 163px;margin-bottom: 10px;">
+            </div>
+          </el-col>
+          <el-col :span="4">
+            <div class="grid-content bg-purple-light" style="height: 354px;margin-bottom: 10px;"></div>
+            <div class="grid-content bg-purple-light" style="height: 354px;margin-bottom: 10px;"></div>
+          </el-col>
+        </el-row>
 
 
-  </div>
+      </div>
+
+    </el-main>
+
+    <el-footer>
+      <icu-footer></icu-footer>
+    </el-footer>
+  </el-container>
 
 </template>
 
 <script>
+  import icuHeader from '@/components/common/header';
+  import icuFooter from '@/components/common/footer';
 
   export default {
+    name: "noteList",
     data() {
       return {}
     },
     components: {
+      icuHeader,
+      icuFooter
     },
     mounted() {
-      localStorage.setItem('showHeader', 1);
-      localStorage.setItem('showFooter', 1);
-
       // params decoding
       var params = this.$route.params.query;
-      // change query params
-      // this.$emit('childQueryParams',params);
-      localStorage.setItem('queryInput', params);
+      // change child query params
+      this.$refs.icuHeaderObj.setQueryValue(params);
       this.doQueryNoteList(params);
+
     },
     methods: {
-      doQueryNoteList(params){
+      doQueryNoteList(params) {
         var query = decodeURIComponent(params);
         console.info("query params:" + query);
       }
@@ -57,6 +74,8 @@
 </script>
 
 <style lang="less">
+
+  @import "../../assets/css/common.css";
 
   .icu-content .el-col {
     background-color: white;
