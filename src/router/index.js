@@ -1,14 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import index from '@/components/index'
+
 import noteList from '@/components/note/note-list'
 import noteDetail from '@/components/note/note-detail'
-import noteWrite from '@/components/note/note-write'
+
 import login from '@/components/login/login'
 import register from '@/components/login/register'
+
 import header from '@/components/common/header'
 import footer from '@/components/common/footer'
-import index from '@/components/index'
+
+import user from '@/components/user/user'
 
 Vue.use(Router)
 
@@ -43,11 +47,6 @@ export default new Router({
       component: register
     },
     {
-      path: '/note-write',
-      name: 'noteWrite',
-      component: noteWrite
-    },
-    {
       path: '/header',
       name: 'header',
       component: header
@@ -56,6 +55,11 @@ export default new Router({
       path: '/footer',
       name: 'footer',
       component: footer
+    },
+    {
+      path: '/user',
+      name: 'user',
+      component: user
     }
   ]
 })

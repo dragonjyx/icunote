@@ -45,17 +45,20 @@
             </el-col>
 
             <el-col :span="2">
-              <el-dropdown>
+              <el-dropdown @command="selectMessageCommand">
                   <span class="el-dropdown-link">
                      消息<i class="el-icon-arrow-down el-icon--right"></i>
                   </span>
                 <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item class="icu-dropdown-item">
-                    <img src="@/assets/image/comment.png">&nbsp;评论</el-dropdown-item>
-                  <el-dropdown-item class="icu-dropdown-item">
-                    <img src="@/assets/image/admire.png">&nbsp;点赞</el-dropdown-item>
-                  <el-dropdown-item class="icu-dropdown-item">
-                    <img src="@/assets/image/concert.png">&nbsp;关注</el-dropdown-item>
+                  <el-dropdown-item class="icu-dropdown-item" command="0">
+                    <img src="@/assets/image/comment.png">&nbsp;评论
+                  </el-dropdown-item>
+                  <el-dropdown-item class="icu-dropdown-item" command="1">
+                    <img src="@/assets/image/admire.png">&nbsp;点赞
+                  </el-dropdown-item>
+                  <el-dropdown-item class="icu-dropdown-item" command="2">
+                    <img src="@/assets/image/concert.png">&nbsp;关注
+                  </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </el-col>
@@ -67,17 +70,19 @@
             </el-col>
 
             <el-col :span="2">
-
-
-              <el-dropdown>
+              <el-dropdown @command="selectUserCommand">
                   <span class="el-dropdown-link">
                     <div class="el-avatar">
                       <img src="http://pic.ruiwen.com/allimg/201607/35-160g41tq3s1.jpg"/>
                     </div>
                   </span>
                 <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item>个人中心</el-dropdown-item>
-                  <el-dropdown-item>退出登录</el-dropdown-item>
+                  <el-dropdown-item class="icu-dropdown-item"  command="0">
+                    <img src="@/assets/image/user.png">&nbsp;个人中心
+                  </el-dropdown-item>
+                  <el-dropdown-item class="icu-dropdown-item" command="1">
+                    <img src="@/assets/image/logout.png">&nbsp;退出登录
+                  </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </el-col>
@@ -119,6 +124,22 @@
 
     },
     methods: {
+      selectMessageCommand(cmd){
+        if(cmd == '0'){
+
+        }else if(cmd == '1'){
+
+        }else if(cmd == '2'){
+
+        }
+      },
+      selectUserCommand(cmd){
+        if(cmd == '0'){
+          this.go2Page('/user')
+        }else if(cmd == '1'){
+
+        }
+      },
       setQueryValue(params){
         var query = decodeURIComponent(params);
         console.info("header set params:" + query);
