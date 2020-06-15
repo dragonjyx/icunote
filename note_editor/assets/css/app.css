@@ -120,8 +120,18 @@ body {
   color: #409EFF !important;
 }
 
+.layui-layout-admin .layui-side .layui-card-body{
+  line-height: 15px !important;
+}
+
 .layui-layout-admin .layui-side .layui-side-scroll .layui-card .catalog-style {
-  color: #969696 !important;
+  color: #737373 !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: block;
 }
 
 .layui-layout-admin .layui-side .layui-side-scroll .layui-card .catalog-style-1 {

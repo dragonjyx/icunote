@@ -1,4 +1,12 @@
 (function () {
+
+  //JavaScript代码区域
+  layui.use('element', function(){
+    var element = layui.element;
+
+  });
+
+
   $(function () {
     var $preview, editor, mobileToolbar, toolbar;
     // Simditor.locale = 'en-US';
