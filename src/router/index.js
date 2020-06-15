@@ -12,6 +12,8 @@ import register from '@/components/login/register'
 import header from '@/components/common/header'
 import footer from '@/components/common/footer'
 
+import design from '@/components/design/design'
+
 import user from '@/components/user/user'
 
 Vue.use(Router)
@@ -60,6 +62,11 @@ export default new Router({
       path: '/user',
       name: 'user',
       component: user
+    },
+    {
+      path: '/design',
+      name: 'design',
+      component: design
     }
   ]
 })

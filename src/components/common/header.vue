@@ -29,7 +29,7 @@
 
             <el-col :span="2">
               <div class="header-menu">
-                <span class="menu-title" @click="go2Page('/note-write')">DIY</span>
+                <span class="menu-title" @click="go2Page('/design')">DIY</span>
               </div>
             </el-col>
 
