@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <el-header>
+    <el-header class="icu-header-style">
 
       <el-row>
         <el-col :span="6">
@@ -50,9 +50,12 @@
                      消息<i class="el-icon-arrow-down el-icon--right"></i>
                   </span>
                 <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item>评论</el-dropdown-item>
-                  <el-dropdown-item>点赞</el-dropdown-item>
-                  <el-dropdown-item>关注</el-dropdown-item>
+                  <el-dropdown-item class="icu-dropdown-item">
+                    <img src="@/assets/image/comment.png">&nbsp;评论</el-dropdown-item>
+                  <el-dropdown-item class="icu-dropdown-item">
+                    <img src="@/assets/image/admire.png">&nbsp;点赞</el-dropdown-item>
+                  <el-dropdown-item class="icu-dropdown-item">
+                    <img src="@/assets/image/concert.png">&nbsp;关注</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </el-col>
@@ -217,6 +220,9 @@
     cursor: pointer;
   }
 
+  .icu-dropdown-item img{
+    width:14px;
+  }
 
 
 </style>
